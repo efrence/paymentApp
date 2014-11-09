@@ -1,0 +1,12 @@
+{
+  "name": "Hitfox Savedo Case Study",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "3.2.0",
+    "angularjs": "1.2.26",
+    "underscore": "1.7.0",
+    "ng-iban" : "latest",
+    "angular-bootstrap-datetimepicker": "latest",
+    "angular-chosen-localytics": "~1.0.6"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "ng-iban",
+  "version": "0.3.1",
+  "authors": [
+    "Mark Manders <mmjmanders@gmail.com>"
+  ],
+  "description": "IBAN directive for AngularJS",
+  "main": "./dist/ng-iban.js",
+  "keywords": [
+    "angular",
+    "iban"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "package.json",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "angular": ">=1.0.0"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.0.0"
+  },
+  "homepage": "https://github.com/mmjmanders/ng-iban",
+  "_release": "0.3.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.1",
+    "commit": "33f40e3262c178039c60f6f793f0b3f9c327162d"
+  },
+  "_source": "git://github.com/mmjmanders/ng-iban.git",
+  "_target": "*",
+  "_originalSource": "ng-iban"
+}

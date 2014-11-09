@@ -1,0 +1,264 @@
+.head {
+  *zoom: 1;
+  width: auto;
+  max-width: 900px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  padding: 2rem 0;
+}
+.head:before,
+.head:after {
+  content: '';
+  display: table;
+}
+.head:after {
+  clear: both;
+}
+@media (max-width: 900px) {
+  .head {
+    *zoom: 1;
+    width: auto;
+    max-width: 900px;
+    float: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .head:before,
+  .head:after {
+    content: '';
+    display: table;
+  }
+  .head:after {
+    clear: both;
+  }
+}
+.head .logo {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 17.6%;
+  margin-left: 0%;
+  margin-right: 3%;
+}
+.head .logo:before,
+.head .logo:after {
+  content: '';
+  display: table;
+}
+.head .logo:after {
+  clear: both;
+}
+.head .logo:last-child {
+  margin-right: 0%;
+}
+@media (max-width: 900px) {
+  .head .logo {
+    display: block;
+    clear: both;
+    float: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+  }
+  .head .logo:first-child {
+    margin-left: auto;
+  }
+  .head .logo:last-child {
+    margin-right: auto;
+  }
+}
+.head nav {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 38.2%;
+  margin-left: 41.2%;
+  margin-right: 3%;
+}
+.head nav:before,
+.head nav:after {
+  content: '';
+  display: table;
+}
+.head nav:after {
+  clear: both;
+}
+.head nav:last-child {
+  margin-right: 0%;
+}
+@media (max-width: 900px) {
+  .head nav {
+    display: block;
+    clear: both;
+    float: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .head nav:first-child {
+    margin-left: auto;
+  }
+  .head nav:last-child {
+    margin-right: auto;
+  }
+}
+.head nav a {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 19.109947643979027%;
+  margin-left: 0%;
+  margin-right: 7.8534031413613%;
+  text-align: center;
+  overflow: hidden;
+}
+.head nav a:before,
+.head nav a:after {
+  content: '';
+  display: table;
+}
+.head nav a:after {
+  clear: both;
+}
+.head nav a:last-child {
+  margin-right: 0%;
+}
+.jumbotron {
+  *zoom: 1;
+  width: auto;
+  max-width: 900px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.jumbotron:before,
+.jumbotron:after {
+  content: '';
+  display: table;
+}
+.jumbotron:after {
+  clear: both;
+}
+.page-header {
+  *zoom: 1;
+  width: auto;
+  max-width: 900px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+}
+.page-header:before,
+.page-header:after {
+  content: '';
+  display: table;
+}
+.page-header:after {
+  clear: both;
+}
+.page-header h1 {
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .page-header {
+    *zoom: 1;
+    width: auto;
+    max-width: 900px;
+    float: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .page-header:before,
+  .page-header:after {
+    content: '';
+    display: table;
+  }
+  .page-header:after {
+    clear: both;
+  }
+}
+.alerts {
+  *zoom: 1;
+  width: auto;
+  max-width: 900px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 3rem;
+}
+.alerts:before,
+.alerts:after {
+  content: '';
+  display: table;
+}
+.alerts:after {
+  clear: both;
+}
+@media (max-width: 900px) {
+  .alerts {
+    *zoom: 1;
+    width: auto;
+    max-width: 900px;
+    float: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .alerts:before,
+  .alerts:after {
+    content: '';
+    display: table;
+  }
+  .alerts:after {
+    clear: both;
+  }
+}
+.alerts .alert {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 48.5%;
+  margin-left: 0%;
+  margin-right: 3%;
+}
+.alerts .alert:before,
+.alerts .alert:after {
+  content: '';
+  display: table;
+}
+.alerts .alert:after {
+  clear: both;
+}
+.alerts .alert:nth-child(2n) {
+  margin-right: 0%;
+  float: right;
+}
+.alerts .alert:nth-child(2n+1) {
+  clear: both;
+}

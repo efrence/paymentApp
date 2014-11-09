@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Savedo</title>
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="css/bootstrap.custimize.css">
+    <link rel="stylesheet" href="bower_components/chosen/chosen.min.css">
+    <link rel="stylesheet" href="bower_components/angular-chosen-localytics/chosen-spinner.css">
+    <link rel="stylesheet" href="css/chosen-bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+    <link rel="stylesheet" href="css/toastr.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body ng-app="caseStudy" ng-controller="mainController">
+
+    <div class="head">
+      <a href="#" class="logo btn btn-primary">Logo</a>
+      <nav>
+      <a href="#" class="btn btn-success" ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)">{{tab.title}}</a>
+      </nav>
+    </div>
+    <div id="content">
+      <div id="mainView">
+        <div ng-include="currentTab"></div>
+      </div>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angularjs/angular.min.js"></script>
+    <script src="bower_components/chosen/chosen.jquery.min.js"></script>
+    <script src="bower_components/angular-chosen-localytics/chosen.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script src="localstoragedb.js"></script>
+    <script src="toastr.min.js"></script>
+    <script src="db.js"></script>
+    <script src="bower_components/ng-iban/dist/ng-iban.min.js"></script>
+    <script src="app.js"></script>
+
+  </body>
+
+  <script type="text/ng-template" id="balance.tpl.html">
+    <div id="balance-container" class="jumbotron">
+      <h1>Account Balance:</h1>
+      <h3>{{ balance | currency }}</h3>
+    </div>
+
+  </script>
+
+  <script type="text/ng-template" id="payment.tpl.html">
+
+    <form role="form" id="payment-form" name="paymentForm" novalidate rc-submit="$parent.makePayment()">
+      <fieldset>
+        <legend>Make Payment</legend>
+        <div class="form-group" ng-class="{'has-error': rc.paymentForm.needsAttention(paymentForm.payee)}">
+          <label class="control-label">Payee</label>
+          <div class="controls">
+            <select chosen data-placeholder="Choose a Payee" required class="form-control" id="states" name="payee" ng-model="payment.payee" ng-options="v.name for (k,v) in payees">
+              <option value="">Choose Payee</option>
+            </select>
+            <p><span class="error" ng-show="rc.paymentForm.needsAttention(paymentForm.payee)">This field is required</span></p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': rc.paymentForm.needsAttention(paymentForm.amount)}">
+          <label class="control-label" for="amount">Amount</label>
+          <div class="controls">
+            <input class="form-control" required  placeholder="Enter an amount" name="amount" type="number" ng-model="payment.amount">
+            <p><span class="error" ng-show="rc.paymentForm.needsAttention(paymentForm.amount)">This field is required</span></p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': checkDate(this)}">
+          <label class="control-label" for="date_day">Date</label>
+            <div class="date-input">
+              <div>
+                <span class="add-on "><i class="icon-calendar icon-2x"></i></span>
+                <select name="date_day" class="form-control input-date day" required ng-model="date2.day" ng-options="(days.indexOf(v)+1) for v in days" ng-change="updateDate()">
+                  <option value="">Day</option>
+                </select>
+                <select name="date_month" class="form-control input-date month" required ng-model="date2.month" ng-options="v for v in months" ng-change="updateDate()">
+                  <option value=""> Month </option></select>  
+                <select name="date_year" class="form-control input-date year" required ng-model="date2.year" ng-options="v for v in years" ng-change="updateDate()">
+                  <option value=""> Year </option> </select> 
+                
+                <button type="submit" id="search" class="btn btn-primary">Create Payment</button>   
+              </div>
+              <p><span class="error" ng-show="checkDate(this)">This field is required</span></p>
+            </div>
+          </div>
+        </div>
+        <datetimepicker data-ng-model="date" data-on-set-time="setDate(newDate,oldDate)"></datetimepicker> 
+    </fieldset>
+  </form>
+</script>
+
+
+<script type="text/ng-template" id="payee.tpl.html">
+  <form role="form" id="payee-form" name="createPayee" novalidate rc-submit="$parent.createPayee();">
+    <fieldset>
+
+      <legend>Create Payee</legend>
+
+      <div class="form-group"  ng-class="{'has-error': rc.createPayee.needsAttention(createPayee.name)}">
+        <label class="control-label" for="name">Payee Name</label>
+        <div class="controls">
+          <input class="form-control" required placeholder="Payee Name" name="name" ng-model="payee.name" type="text">
+          <p><span class="error" ng-show="rc.createPayee.needsAttention(createPayee.name)">This field is required</span></p>
+        </div>
+      </div>
+
+      <div class="form-group"  ng-class="{'has-error': rc.createPayee.needsAttention(createPayee.bank)}">
+        <label class="control-label" for="bank">Bank</label>
+        <div class="controls">
+          <input class="form-control" required placeholder="Bank name" name="bank" ng-model="payee.bank" type="text">
+          <p><span class="error" ng-show="rc.createPayee.needsAttention(createPayee.bank)">This field is required</span></p>
+        </div>
+      </div>
+
+      <div class="form-group"  ng-class="{'has-error': rc.createPayee.needsAttention(createPayee.iban)}">
+        <label class="control-label" for="iban">IBAN</label>
+        <div class="controls">
+          <input class="form-control" required placeholder="IBAN" name="iban" type="text" ng-iban ng-model="payee.iban">
+          <p><span class="error" ng-show="rc.createPayee.needsAttention(createPayee.iban)">Invalid IBAN number</span></p>
+        </div>
+      </div>
+
+    </fieldset>
+    <button id="submit" name="button" type="submit" class="btn btn-primary pull-right">Create Payee</button>
+  </form>
+
+</script>
+</html>
+
